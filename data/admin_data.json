@@ -1,0 +1,5 @@
+{
+  "username": "Admin",
+  "expected_role": "Admin",
+  "expected_status": "Enabled"
+}
