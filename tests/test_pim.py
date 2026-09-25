@@ -47,13 +47,13 @@ class TestPIM:
     def test_delete_employee(self, driver, username, password, first_name, last_name):
         pim_page = self._login_and_navigate_to_pim(driver, username, password)
 
-        pim_page.search_employee(f"{first_name} {last_name}")
-        pim_page.delete_employee()
+        employee_name = f"{first_name} {last_name}"
+        pim_page.search_employee(employee_name)
+        pim_page.delete_employee(employee_name)
 
-        pim_page.search_employee(f"{first_name} {last_name}")
+        pim_page.search_employee(employee_name)
         result = pim_page.get_search_results()
-        assert f"{first_name} {last_name}" not in result
-
+        assert not any(employee_name in row for row in result)
 
 
 
