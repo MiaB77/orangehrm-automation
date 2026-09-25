@@ -4,36 +4,39 @@ Automated UI testing framework for OrangeHRM using Selenium WebDriver and Python
 
 ## 📋 Project Overview
 
-This project implements a Page Object Model (POM) framework to automate testing of the OrangeHRM web application, covering login, PIM (Employee Management), and Admin functionalities.
+This project implements a Page Object Model (POM) framework to automate testing of the OrangeHRM web application, covering Login, PIM (Employee Management), and Admin functionalities.
+
+Built with industry best practices: data-driven testing, explicit waits, screenshot on failure, and configurable CI/CD-ready setup.
 
 ## 🗂️ Project Structure
-
 orangehrm-automation/
-├── config/ # Configuration settings
-├── data/ # Test data (JSON files)
-├── pages/ # Page Object classes
+├── config/ # Configuration settings (BASE_URL, HEADLESS mode)
+├── data/ # JSON test data files
+├── pages/ # Page Object classes (BasePage, LoginPage, PIMPage, AdminPage)
 ├── reports/ # HTML reports and screenshots
 ├── tests/ # Test files
-└── utils/ # Helper utilities
+└── utils/ # Helper utilities (data_loader)
 
 
 ## ✅ Test Coverage
 
 | Module | Tests |
 |--------|-------|
-| Login | Valid login, Invalid login |
+| Login | Valid login, Invalid login (3 scenarios) |
 | PIM | Add Employee, Search Employee, Delete Employee |
 | Admin | Search by username, Verify user role, Verify user status |
 
+**Total: 13 parametrized test cases across 3 modules**
+
 ## 🛠️ Tools & Technologies
 
-- Python 3.x
-- Selenium WebDriver
-- pytest
-- pytest-html
-- pytest-ordering
-- Page Object Model (POM)
-- Data-driven testing (JSON)
+- **Python 3.x** — OOP, data-driven testing
+- **Selenium WebDriver 4.x** — UI automation
+- **pytest** — Test framework with parametrize
+- **pytest-html** — Automated HTML reports
+- **pytest-ordering** — Test execution order control
+- **Page Object Model (POM)** — BasePage inheritance pattern
+- **JSON** — External test data management
 
 ## 🚀 How to Run
 
@@ -59,21 +62,25 @@ pytest tests/test_pim.py -v
 pytest tests/test_admin.py -v
 ```
 
-## 📊 Features
+### Run in headless mode
+Set `HEADLESS = True` in `config/settings.py`
+
+## 📊 Key Features
 
 - **Page Object Model** — Separation of test logic and page interactions
-- **Data-driven testing** — Test data stored in JSON files
-- **HTML Reports** — Visual test reports generated automatically
-- **Screenshots on failure** — Automatic screenshots when tests fail
-- **Headless mode** — Configurable headless browser execution
-- **Explicit Waits** — Reliable element interaction with WebDriverWait
+- **BasePage architecture** — Shared methods (click, enter_text, wait_for_element)
+- **Data-driven testing** — JSON files with parametrized test scenarios
+- **HTML Reports** — Auto-generated with pytest-html and --self-contained-html
+- **Screenshot on failure** — Automatic capture saved to reports/screenshots/
+- **Explicit Waits** — WebDriverWait with Expected Conditions throughout
+- **Headless mode** — Configurable for CI/CD pipeline execution
 
 ## ⚠️ Notes
 
-- Tests are run against the [OrangeHRM Demo](https://opensource-demo.orangehrmlive.com/) which is a **shared public environment**
+- Tests run against [OrangeHRM Demo](https://opensource-demo.orangehrmlive.com/) — a **shared public environment**
 - Test stability may vary due to data added by other users on the demo site
 - For best results, run tests on a fresh OrangeHRM instance
 
 ## 👤 Author
 
-MiaB77
+[MiaB77](https://github.com/MiaB77)
