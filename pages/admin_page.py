@@ -7,7 +7,7 @@ class AdminPage(BasePage):
     USERNAME_INPUT = (By.XPATH, "//div[@class='oxd-table-filter-area']//input")
     SEARCH_BUTTON = (By.XPATH, "//button[contains(@class,'oxd-button--secondary') and contains(.,'Search')]")
     RESULTS = (By.XPATH, "//span[@class='oxd-text oxd-text--span']")
-    TABLE_CELLS = (By.XPATH, "//div[@class='oxd-table-body']//div[@data-v-6c07a142]")
+    TABLE_CELLS = (By.XPATH, "//div[contains(@class,'oxd-table-body')]//div[contains(@class,'oxd-table-cell')]")
 
     def navigate_to_admin_page(self):
         self.click(self.ADMIN_BUTTON)

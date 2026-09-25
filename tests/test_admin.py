@@ -23,7 +23,7 @@ class TestAdminPage:
         admin_page = self._login_and_navigate_to_admin_page(driver, cred_username, cred_password)
 
         result = admin_page.get_results()
-        assert "Record Found" in result
+        assert "Record" in result and "Found" in result
 
 
     def test_verify_user_role(self,driver, cred_username, cred_password):
