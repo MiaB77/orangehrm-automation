@@ -52,7 +52,7 @@ class TestPIM:
 
         pim_page.search_employee(f"{first_name} {last_name}")
         result = pim_page.get_search_results()
-        assert f"{first_name} {last_name}" not in result
+        assert result == [], f"Employee {first_name} {last_name} still found after deletion: {result}"
 
 
 

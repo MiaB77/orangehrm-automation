@@ -1,4 +1,5 @@
-from selenium.common import TimeoutException
+from selenium.common import TimeoutException, StaleElementReferenceException
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -6,7 +7,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(driver, 10)
+        self.wait = WebDriverWait(driver, 10, ignored_exceptions=[StaleElementReferenceException])
 
     def navigate_to(self, url):
         self.driver.get(url)
@@ -17,6 +18,8 @@ class BasePage:
     def enter_text(self, locator, text):
         element = self.wait_for_element(locator)
         element.clear()
+        element.send_keys(Keys.CONTROL, "a")
+        element.send_keys(Keys.DELETE)
         element.send_keys(text)
 
     def find_elements(self, locator):
@@ -27,6 +30,9 @@ class BasePage:
 
     def get_text(self, locator):
         return self.wait_for_element(locator).text
+
+    def wait_for_staleness(self, element):
+        self.wait.until(EC.staleness_of(element))
 
     def is_element_displayed(self, locator):
             try:
