@@ -1,5 +1,4 @@
-selenium
-pytest
-pytest-html
-pytest-order
-pytest-metadata
+selenium==4.47.0
+pytest==9.1.1
+pytest-html==4.2.0
+pytest-ordering==0.6
